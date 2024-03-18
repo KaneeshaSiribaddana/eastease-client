@@ -1,0 +1,41 @@
+[nz-carousel-content] {
+    text-align: center;
+    height: 150px;
+    line-height: 20px;
+    background: #364d79;
+    color: #fff;
+    overflow: hidden;
+    border-radius: 10px;
+  }
+
+  h3 {
+    color: #fff;
+    margin-bottom: 0;
+    user-select: none;
+  }
+
+
+  /* Media queries for responsiveness */
+@media screen and (max-width: 768px) {
+  [nz-carousel-content] {
+    height: 160px;
+    line-height: 18px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  [nz-carousel-content] {
+    height: 70px;
+    line-height: 16px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  [nz-carousel-content] {
+    height: 30px;
+    line-height: 14px;
+  }
+}
+[nz-modal]{
+  border-radius: 20px;
+}

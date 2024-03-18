@@ -1,0 +1,22 @@
+.custom-modal .ant-modal-content {
+    background-color: transparent; /* Set background-color to transparent to allow custom styling */
+  }
+  
+  .custom-modal .ant-modal-body {
+    background-color: #1e3a8a; /* Use blue-900 color for the modal background */
+  }
+  
+  .custom-modal-content .ant-modal-content {
+    background-color: transparent; /* Set background-color to transparent to allow custom styling */
+  }
+  
+  .custom-modal-content .ant-modal-body {
+    background-color: #1e3a8a; /* Use blue-900 color for the modal content background */
+  }
+
+  .custom-close-icon .ant-modal-close-x {
+    color: white !important; /* Set the color of the close icon to white */
+  }
+  nz-range-picker {
+    margin: 0 8px 12px 0;
+  }
