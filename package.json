@@ -22,6 +22,7 @@
     "@angular/router": "^17.2.0",
     "@angular/ssr": "^17.2.3",
     "angular-chart.js": "^1.1.1",
+    "angular-sessionstorage": "^1.1.5",
     "chart.js": "^4.4.2",
     "express": "^4.18.2",
     "flowbite": "^2.3.0",

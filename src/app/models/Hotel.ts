@@ -1,7 +1,4 @@
-export interface ApiResponse<T>{
-    message?:string;
-    data:T;
-}
+
 
 export interface IHotel{
     id:number;
@@ -11,4 +8,6 @@ export interface IHotel{
     phoneNumber:string;
     city:string;
     street:string;
+    status:boolean;
+    // images: File[];
 }

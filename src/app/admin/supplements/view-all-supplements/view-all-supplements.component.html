@@ -1,0 +1,57 @@
+<section class="mx-10">
+    <div class="flex justify-end">
+        <a href="admin/supplements/create"
+            class="text-white bg-blue-900 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Add Supplement +</a>
+    </div>
+    <nz-table #nzTable [nzData]="listOfDisplayData" nzTableLayout="fixed">
+        <thead>
+            <tr>
+                <th *ngFor="let column of listOfColumns" [nzSortOrder]="column.sortOrder" [nzSortFn]="column.sortFn"
+                    [nzSortDirections]="column.sortDirections" [nzFilterMultiple]="column.filterMultiple"
+                    [nzFilters]="column.listOfFilter" [nzFilterFn]="column.filterFn">
+                    {{ column.name }}
+                </th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of nzTable.data">
+                <td>{{ data.id }}</td>
+                <td>{{ data.name }}</td>
+                <td>{{ data.description }}</td>
+                <td>
+                    <ng-container *ngIf="data.status === true">
+                        <nz-tag nzColor="processing">Active</nz-tag>
+                    </ng-container>
+                    <ng-container *ngIf="data.status !== true">
+                        <nz-tag nzColor="error">Deactive</nz-tag>
+                    </ng-container>
+                </td>
+                <td>
+                    <span nz-icon nzType="more" nzTheme="outline" nz-dropdown nzTrigger="click"
+                        [nzDropdownMenu]="actions" (click)="selectedData(data.id)"></span>
+                </td>
+            </tr>
+        </tbody>
+    </nz-table>
+</section>
+<nz-dropdown-menu #menu="nzDropdownMenu">
+    <div class="ant-table-filter-dropdown">
+        <div class="search-box">
+            <input type="text" nz-input placeholder="Search name" [(ngModel)]="searchValue" />
+            <button nz-button nzSize="small" nzType="primary" (click)="search()" class="search-button">Search</button>
+            <button nz-button nzSize="small" (click)="reset()">Reset</button>
+        </div>
+    </div>
+</nz-dropdown-menu>
+<nz-dropdown-menu #actions="nzDropdownMenu">
+    <ul nz-menu>
+      <li nz-menu-item>Edit</li>
+      <li nz-menu-divider></li>
+      <li nz-menu-item [ngClass]="{'text-red-700': status, 'text-green-700': !status}"  (click)="checkStatus()">
+        <ng-container *ngIf="status; else activateItem">Deactivate</ng-container>
+        <ng-template #activateItem>Activate</ng-template>
+      </li>
+    </ul>
+  </nz-dropdown-menu>

@@ -2,3 +2,5 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import "~ng-zorro-antd/ng-zorro-antd.compact.css";
