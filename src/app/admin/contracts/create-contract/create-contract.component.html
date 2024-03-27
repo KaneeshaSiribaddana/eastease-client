@@ -1,0 +1,81 @@
+<form class="" (ngSubmit)="onSubmit()">
+  <div class="grid md:grid-cols-1 md:gap-6">
+    <div>
+      <div class="relative z-0 w-full mb-5 group">
+        <label for="hotel" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select
+          Hotel</label>
+        <nz-select id="hotel" nzShowSearch nzAllowClear nzPlaceHolder="Select a person" [(ngModel)]="hotelId"
+          [ngModelOptions]="{standalone: true}">
+          <nz-option *ngFor="let hotel of hotelDataList" nzLabel="{{hotel.id}} - {{hotel.name}} - {{hotel.city}}"
+            nzValue="{{hotel.id}}"></nz-option>
+        </nz-select>
+      </div>
+      <div class="relative z-0 w-full mb-5 group">
+        <label for="hotel" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Seasons</label>
+        <button nz-button (click)="addRow()"
+          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          nzType="primary">Add Season</button>
+        <br />
+        <br />
+        <nz-table #editRowTable nzBordered [nzData]="listOfSeason" [nzFrontPagination]="false" id="seasonTable"
+          class="hidden">
+          <thead>
+            <tr>
+              <th nzWidth="30%">Name</th>
+              <th>Date Range</th>
+              <th>Markup</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container *ngIf="editRowTable.data && editRowTable.data.length > 0">
+              <tr *ngFor="let data of editRowTable.data" class="editable-row">
+                <td>
+                  <div class="editable-cell" [hidden]="editId === data.id" (click)="startEdit(data.id)">
+                    {{ data.name }}
+                  </div>
+                  <input [hidden]="editId !== data.id" type="text" nz-input [(ngModel)]="data.name" (blur)="stopEdit()"
+                    [ngModelOptions]="{standalone: true}" nzSize="default" />
+                </td>
+                <td>
+                  <div class="editable-cell" [hidden]="editId === data.id" (click)="startEdit(data.id)">
+                    {{ data.dateRange[0] | date:'yyyy-MM-dd':'en-US' }} To {{ data.dateRange[1] |
+                    date:'yyyy-MM-dd':'en-US' }}
+                  </div>
+                  <nz-range-picker [hidden]="editId !== data.id" [(ngModel)]="data.dateRange" nzSize="large"
+                    (ngModelChange)="onChange($event)" (blur)="stopEdit()"
+                    [ngModelOptions]="{standalone: true}"></nz-range-picker>
+                </td>
+                <td>
+                  <div class="editable-cell" [hidden]="editId === data.id" (click)="startEdit(data.id)">
+                    {{ data.markup }}
+                  </div>
+                  <input [hidden]="editId !== data.id" type="text" nz-input [(ngModel)]="data.markup"
+                    (blur)="stopEdit()" [ngModelOptions]="{standalone: true}" nzSize="default" >
+                </td>
+                <td>
+                  <a nz-popconfirm nzPopconfirmTitle="Sure to delete?" (nzOnConfirm)="deleteRow(data.id)">Delete</a>
+                </td>
+              </tr>
+            </ng-container>
+          </tbody>
+        </nz-table>
+      </div>
+      <div class="relative z-0 w-full mb-5 group">
+        <label for="hotel" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Supplements</label>
+      
+        <nz-select nzMode="tags" nzPlaceHolder="Tag Mode" [(ngModel)]="listOfTagSupplements" (ngModelChange)="supplementsAdded()" [ngModelOptions]="{standalone: true}">
+          <nz-option *ngFor="let option of listOfSupplements; trackBy: trackByFn" [nzLabel]="option.label" [nzValue]="option.value"></nz-option>
+        </nz-select>
+      </div>
+      
+      <div class="relative z-0 w-full mb-5 group">
+        <div id="tableSeason">
+          <!-- Table will be dynamically generated here -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <button type="submit"
+    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+</form>

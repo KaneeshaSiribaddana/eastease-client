@@ -1,0 +1,39 @@
+nz-select {
+    width: 400px;
+  }
+
+  .dynamic-delete-button {
+    cursor: pointer;
+    position: relative;
+    top: 4px;
+    font-size: 24px;
+    color: #999;
+    transition: all 0.3s;
+  }
+
+  .dynamic-delete-button:hover {
+    color: #777;
+  }
+
+  .passenger-input {
+    width: 30%;
+    margin-right: 8px;
+  }
+
+  [nz-form] {
+    max-width: 600px;
+  }
+
+  .add-button {
+    width: 60%;
+  }
+
+  .editable-cell {
+    position: relative;
+    cursor: pointer;
+  }
+
+  .editable-row:hover .editable-cell {
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+  }

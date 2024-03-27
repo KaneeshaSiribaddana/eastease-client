@@ -7,7 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzModalModule, NzModalRef, NzModalService } from 'ng-zorro-antd/modal';
 import { NzTableFilterFn, NzTableFilterList, NzTableSortFn, NzTableSortOrder } from 'ng-zorro-antd/table';
-import { SupplementsService } from '../../../service/supplement/supplement.service';
+import { SupplementService } from '../../../service/supplement/supplement.service';
 import { ISupplement } from '../../../models/Supplement';
 import { ApiResponse } from '../../../models/ApiResponse';
 import { NzMessageService } from 'ng-zorro-antd/message';
@@ -38,7 +38,7 @@ export class ViewAllSupplementsComponent implements OnInit {
   status: boolean = true;
 
   constructor(
-    private supplementService: SupplementsService,
+    private supplementService: SupplementService,
     private modal: NzModalService,
     private message: NzMessageService
   ) {}

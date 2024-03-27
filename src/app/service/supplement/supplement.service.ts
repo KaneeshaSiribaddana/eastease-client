@@ -7,7 +7,7 @@ import { ApiResponse } from '../../models/ApiResponse';
 @Injectable({
   providedIn: 'root'
 })
-export class SupplementsService {
+export class SupplementService {
   apiurl = "http://localhost:8080/api/v1/supplements"; // Update the API URL accordingly
   constructor(private http: HttpClient) { }
 
